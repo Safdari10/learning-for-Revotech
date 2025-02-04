@@ -39,13 +39,37 @@ image_path = "image1.jpg"
 image = Image.open(image_path).convert("RGB")
 
 # Preprocess the image and generate a caption 
-inputs = processor(images=image, return_tensors="pt") # preprocess the image using the processor and convert it to PyTorch tensors. PyTorch tensors are used as input to the model. PyTorch is a popular deep learning library.
-with torch.no_grad(): # here we are using torch.no_grad() to disable gradient calculation which is not needed for inference. gradient calculation is used for training. 
-    caption = model.generate(**inputs) # generate the caption using the model and inputs generated from the image.
+#inputs = processor(images=image, return_tensors="pt") # preprocess the image using the processor and convert it to PyTorch tensors. PyTorch tensors are used as input to the model. PyTorch is a popular deep learning library.
+# with torch.no_grad(): # here we are using torch.no_grad() to disable gradient calculation which is not needed for inference. gradient calculation is used for training. 
+    #caption = model.generate(**inputs) # generate the caption using the model and inputs generated from the image.
     
 # Decode and print the caption
-generated_caption = processor.decode(caption[0], skip_special_tokens=True)
-print("Generated Caption:", generated_caption)
+#generated_caption = processor.decode(caption[0], skip_special_tokens=True)
+#print("Generated Caption:", generated_caption)
 
 # Step 4: Run the code
 # run the code and it will generate a caption for the image.
+
+# Step 5: Understand the code
+# The code uses the BlipProcessor and BlipForConditionalGeneration classes from the transformers library to load the BLIP model for image captioning.
+# It then loads an image using the PIL library and preprocesses it using the processor.
+# The model generates a caption for the image, which is then decoded and printed.
+
+# Step 6: Experiment with the code
+# modfiy the model parameters to optimize the caption generation.
+
+input = processor(images=image, return_tensors="pt")
+with torch.no_grad():
+    caption = model.generate(
+        **input,
+        max_length=30, # set the maximum length of the generated caption to 30 tokens.
+        num_return_sequences=3, # generate multiple captions for the same image.
+        temperature=0.7, # adjust the temperature parameter to control the randomness of the generated captions. here we set it to 0.7 which is a common value and makes it more creative.
+        top_k=50, # adjust the top_k parameter to control the diversity of the generated captions. here we set it to 50 to reduce unlikely words.
+        top_p=0.9, # adjust the top_p parameter to control the diversity of the generated captions. here we set it to 0.9 to focus on high probability words.
+        repetition_penalty=1.5 # Avoid repeating phrases in the generated captions by setting the repetition_penalty parameter to 1.5.
+    )
+    
+for i, cap in enumerate(caption):  # loop through the generated captions, i is the index and cap is the caption.
+    generated_caption = processor.decode(cap, skip_special_tokens=True) # decode and print the generated caption.
+    print(f"Generated Caption {i+1}: {generated_caption}")
