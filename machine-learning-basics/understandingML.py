@@ -24,6 +24,7 @@
 # | 2500           | 750000|
 # | 3000           | 900000|
 
+
 # Step 4: Write Python Code
 
 import numpy as np
@@ -32,10 +33,12 @@ from sklearn.linear_model import LinearRegression
 
 # 1. Prepare the dataset
 square_feet = np.array([1000, 1500, 2000, 2500, 3000]).reshape(-1, 1)  # features (x) 
-# reshape(-1, 1) is used to convert 1D array to 2D array and -1 is used to infer the number of rows based on the number of columns. 
+# reshape(-1, 1) is used to convert 1D array to 2D array and -1 is used to infer the number of rows based on the number of columns. infer here means, the row number is automatically calculated based on the number of columns.
 # In this case, we have 1 column, so the number of rows is inferred automatically. converting 1D array to 2D array is required by scikit-learn and it means that we have 5 samples and 1 feature.
+# 2d Array format looks like this: [[1000], [1500], [2000], [2500], [3000]] where each row represents a sample and each column represents a feature.
 
 prices = np.array([300000, 450000, 600000, 750000, 900000])  # target (y)
+# prices is a 1D array that contains the target values (house prices). It has 5 elements, each corresponding to the price of a house with a specific square footage.
 
 # 2. Train the model
 model = LinearRegression()  # create a linear regression model
@@ -64,3 +67,7 @@ plt.show()
 # The red line is the regression line that best fits the data points. 
 # The green cross represents the predicted price of the house. 
 # The model has learned the relationship between square footage and price and can make accurate predictions based on new data.
+
+
+# Step 6: Conclusion
+# In this tutorial, you learned the basics of machine learning and how to build a simple linear regression model using scikit-learn.
