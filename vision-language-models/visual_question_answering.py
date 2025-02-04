@@ -24,7 +24,7 @@ image_path = "image.jpg"
 image = Image.open(image_path).convert("RGB")
 
 # Define a question
-question = "What is in the image?"
+question = "What is the color of the car?"
 
 # Preprocess the image and question
 inputs = processor(image, question, return_tensors="pt")
