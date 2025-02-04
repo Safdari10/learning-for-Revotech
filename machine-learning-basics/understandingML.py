@@ -57,10 +57,10 @@ plt.legend()
 plt.show()
 
 # run the code and you should see the following output: 
-# The predicted price of a house with 2200 square feet is $550000.00
+# The predicted price of a house with 2200 square feet is $660000.00
 
 # Step 5: Interpret the Results
-# The model predicts the price of a house with 2200 square feet to be $550,000. 
+# The model predicts the price of a house with 2200 square feet to be $660,000.00.   
 # The red line is the regression line that best fits the data points. 
 # The green cross represents the predicted price of the house. 
 # The model has learned the relationship between square footage and price and can make accurate predictions based on new data.
