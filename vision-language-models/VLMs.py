@@ -67,9 +67,16 @@ with torch.no_grad():
         temperature=0.7, # adjust the temperature parameter to control the randomness of the generated captions. here we set it to 0.7 which is a common value and makes it more creative.
         top_k=50, # adjust the top_k parameter to control the diversity of the generated captions. here we set it to 50 to reduce unlikely words.
         top_p=0.9, # adjust the top_p parameter to control the diversity of the generated captions. here we set it to 0.9 to focus on high probability words.
-        repetition_penalty=1.5 # Avoid repeating phrases in the generated captions by setting the repetition_penalty parameter to 1.5.
+        repetition_penalty=1.5, # Avoid repeating phrases in the generated captions by setting the repetition_penalty parameter to 1.5.
+        do_sample=True # Enable sampling-based generation to support multiple return sequences.
     )
     
 for i, cap in enumerate(caption):  # loop through the generated captions, i is the index and cap is the caption.
     generated_caption = processor.decode(cap, skip_special_tokens=True) # decode and print the generated caption.
     print(f"Generated Caption {i+1}: {generated_caption}")
+    
+    
+# output: 
+# Generated Caption 1: beautiful tiger lying down on the ground with his eyes closed
+# Generated Caption 2: leopard laying on dirt in front of grass and bushes
+# Generated Caption 3: wildlife park in india has a number of exotic animals, including this tiger
