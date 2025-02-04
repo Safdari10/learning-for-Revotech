@@ -20,7 +20,7 @@ processor = BlipProcessor.from_pretrained("Salesforce/blip-vqa-base")
 model = BlipForQuestionAnswering.from_pretrained("Salesforce/blip-vqa-base")
 
 # load the image
-image_path = "image1.jpg"
+image_path = "image.jpg"
 image = Image.open(image_path).convert("RGB")
 
 # Define a question
