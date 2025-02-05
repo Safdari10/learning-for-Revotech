@@ -21,3 +21,9 @@
 # GPT-4 writes essays, answers questions.
 # BLIP generates image captions, answers visual questions.
 # CLIP matches images with text descriptions.  
+
+
+# Why are Foundation Models important?
+# 1. Generalisation: they can be used for many different tasks.
+# 2. Scalability: You dont need to train from scratch.
+# 3. Efficiency: Saves time by leveraging pre-trained knowledge.
